@@ -74,7 +74,7 @@ scrape(`http://alamodps.com/item_details.php?id=${items.refs[i]}`, {
       this.description = description.split('\r')[0],
       this.price = price,
       this.condition = condition,
-      this.measurements = [width, height, depth, diameter],
+      this.measurements = {'width': width, 'height': height, 'depth': depth, 'diameter': diameter},
       this.numOfItems = num,
       this.imageUrl = `https://s3-us-west-1.amazonaws.com/alamod-inventory/f_${items.refs[i]}.jpg`
     }
@@ -84,7 +84,7 @@ scrape(`http://alamodps.com/item_details.php?id=${items.refs[i]}`, {
   console.log(obj)
   invArr.push(obj);
 
-  fs.appendFile('./inv.json', JSON.stringify(obj));
+  fs.appendFile('./inv.json', JSON.stringify(obj) + ',\n');
   
 });
     
