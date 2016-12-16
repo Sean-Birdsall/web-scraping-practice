@@ -83,6 +83,8 @@ scrape(`http://alamodps.com/item_details.php?id=${items.refs[i]}`, {
   var obj = new Item(data.name, data.period, data.description, data.price, data.condition);
   console.log(obj)
   invArr.push(obj);
+
+  fs.appendFile('./inv.json', JSON.stringify(obj));
   
 });
     
